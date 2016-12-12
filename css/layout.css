@@ -90,7 +90,7 @@ nav li.active a {
 }
 
 section {
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #fff;
     box-shadow: 0 0 3px lightgray;
     /*border:1px solid gray;*/
@@ -106,8 +106,8 @@ section {
 }
 
 .people-info-container {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     line-height: 48px;
     background-color: rgba(42, 42, 42, .85);
     /*background-color: #0dad51;*/
