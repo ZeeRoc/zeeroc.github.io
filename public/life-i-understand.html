@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>我所理解的生活</title>
+    <link rel="stylesheet" href="css/init.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/article.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8,user-scalable=no">
+</head>
+
+<body>
+    <img class="bg-full-fixed" src="images/common/bg.jpg" alt="">
+    <header>
+        <div class="container-wapper clearfix">
+            <div class="page-title">
+                <a href="javascript:;">大梦初醒 · 荒唐了一生！</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="archives.html">Archives</a></li>
+                    <li><a href="tags.html">Tags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="article-body">
+        <div class="article-title">
+            <h4 class="title">我所理解的生活</h4>
+            <span class="date">2016-11-24 14:37:01</span>
+        </div>
+
+        <div class="article-content">
+            
+
+<h3 class="article-item"> 前言</h3>
+
+<p>调用 Go 的 HTTP Client 的 Get\Post 之类的方法时，默认是开启<code>HTTPkeepalive</code> 的，不过直接使用还是会遇到一些情况导致持久连接失效。首先，Client 构造好 HTTP 请求后，利用<code>Transport</code> 来发送请求并等待结果，默认使用<code>DefaultTransport</code> 来实现，大多数情况下，自定义 Client 时，配置一下自带的 Transport 即可。</p>
+<p>Transport 主要围绕着<code>persistConn</code> 来实现，通过当前请求的<code>proxy</code>,<code>scheme</code>,<code>addr</code>作为 Key，对已经建立的连接进行缓存，新的请求来时，先从缓存中取一个连接，如果没有，再新发起一个连接。按照 Go 的基本法，毫无疑问会有两个<code>goroutine</code> 来分别处理连接上的读和写，然后各种 channel 就开始飞来飞去，于是便让人深思这真的会比基于事件回调的实现简单吗。</p>
+
+<h3 class="article-item"> 1. 准备工作</h3>
+
+<p>可见每次都会有一个请求是新建了个 TCP 连接的，也就是说默认只保持两条持久连接，这是因为这里自定义的的<code>http.Transport</code> 没有设置<code>MaxIdleConnsPerHost</code>，于是便采用了默认的<code>DefaultMaxIdleConnsPerHost</code>，这个值是 2，这是 <a href="http://baidu.com">RFC2616</a> 建议的单个客户端发起的持久连接数，不过在大部分情况下，这个值有点过于保守了。如果把 MaxIdleConnsPerHost 设置为 3，结果便和第一种情况一样。</p>
+<div class="this.program.call( lines = linenos : language : classify = pre-lump ).init() clearfix">                    <dl class="clearfix">                        <dt><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></dt>                        <dd>                            <pre class="this.lang = lang-js"><span class="token keyword">var</span> express = require(<span class="token string">'express'</span>);
+<span class="token keyword">var</span> app = express();
+<span class="token keyword">var</span> http = require(<span class="token string">'http'</span>);
+<span class="token keyword">var</span> route = require(<span class="token string">'./route'</span>);
+<span class="token keyword">var</span> service = require(<span class="token string">'.<span class="token regex">/route/</span>service.js'</span>);
+
+route.handle(app);
+
+
+http.createServer(app).listen(300, <span class="token keyword">function</span>() {
+    console.log(<span class="token string">"Express server listening on port "</span> + 300);
+});</pre>                        </dd>                    </dl>                </div>
+
+<h3 class="article-item"> 2. 测试</h3>
+<figure><img src="https://dn-serho.qbox.me/blog/20160211-6.jpg" alt="釜山第一瞥"<blockquote><p>                <figcaption>釜山第一瞥</figcaption>            </figure></p></blockquote>
+
+<blockquote><p> “你好美！你好美！你真的好美!她有天使般的笑容，或许我“应该”和她在一起，但是…….事实是，我们不可能在一起”</p></blockquote>
+
+<p>那么This造成的一个假象是什么呢？</p>
+<p>于是火速去找这位上尉诗人的专辑，有幸在论坛上把三张专辑的无损格式给下载下来了，有两张是APE格式的，有一张是FLAC格式的，由于是校内的论坛，普通用户无法下载，好东西不能独享，于是今天将其传到115网盘，和大家一起分享。这三张专辑分别是<a href="http://baidu.com">《Back to Bedlam》</a>（不安于室），<a href="http://baidu.com">《All The Lost Souls》</a>（失落的灵魂），<a href="http://baidu.com">《Some Kind of Trouble》</a>（美丽的忧虑）。各个专辑的曲目，网上多的是，这里就不一一详解了，喜欢的朋友们，开动电脑下载吧。</p>
+        </div>
+        <div class="article-detail-info">
+            <ul>
+                <li><a href="###" class="tags"><i class="i">&#xe607;</i>Life</a></li><li><a href="###" class="tags"><i class="i">&#xe607;</i>旅游</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>©copyright 2006-2016 www.zeeroc.com all rights reserved.</footer>
+</body>
+
+</html>

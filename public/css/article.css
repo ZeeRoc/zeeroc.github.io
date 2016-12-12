@@ -1,0 +1,131 @@
+.article-body {
+    margin: 80px auto 20px auto;
+    width: 50%;
+    /*height: 1000px;*/
+    border-radius: 4px;
+    background: #fff;
+}
+
+.article-title {
+    padding-left: 22px;
+    padding-right: 22px;
+    color: #f95b1f;
+    /*color: #999999;*/
+    border-bottom: 1px solid lightgray;
+}
+
+.article-title .title {
+    /*float: left;*/
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.article-title .date {
+    font-size: 1.4rem;
+    line-height: 50px;
+    color: gray;
+    float: right;
+}
+
+.article-detail-info {
+    font-size: 14px;
+    padding: 8px 22px;
+    border: none;
+}
+
+.article-detail-info i {
+    padding: 0 2px;
+    font-size: 14px;
+    color: #555;
+    /*vertical-align: bottom;*/
+}
+
+.article-detail-info .tags {
+    padding: 0 2px;
+    font-size: 12px;
+    color: #555;
+}
+
+.article-detail-info li {
+    color: #0dad51;
+    display: inline-block;
+    list-style: none;
+    line-height: 20px;
+}
+
+.article-content {
+    color: #555;
+    padding: 0 22px;
+    /*width: 100%;*/
+}
+
+.article-content p {
+    line-height: 30px;
+    font-size: 15px;
+}
+
+
+/* figure */
+
+.article-content figure {
+    /*position: relative;*/
+    clear: both;
+    outline: 0;
+    margin: 0 0 15px;
+    padding: 0;
+    min-height: 100px;
+}
+
+.article-content img {
+    z-index: 0;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.article-content figure figcaption {
+    /*position: relative;*/
+    width: 80%;
+    text-align: center;
+    left: 0;
+    margin: 10px auto;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 26px;
+    color: #999;
+}
+
+.article-content a {
+    color: #2a6496;
+    border-bottom: 1px dashed #ced1d1;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+}
+
+code {
+    background-color: #f7f7f9;
+}
+
+.article-item {
+    color: #777;
+    border-left: 4px solid #f95b1f;
+    background-color: #f7f7f7;
+    margin: 20px 0;
+    font-size: 20px;
+    padding: 0 14px;
+    line-height: 35px;
+}

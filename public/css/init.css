@@ -1,0 +1,98 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Consolas";
+    src: url('../fonts/Consolas.ttf');
+    /* IE9*/
+    src: url('../fonts/Consolas.ttf') format('truetype');
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(41, 36, 33, 0.25);
+    -webkit-border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(41, 36, 33, 0.35);
+    -webkit-border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: lightgray;
+}
+
+html,
+body {
+    /*transition: all ease-in-out .25s;*/
+    font-family: 'Microsoft Yahei';
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+input {
+    outline: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 8px 0;
+    margin: 1px 0;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.4rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+p {
+    margin: 2px 0;
+    padding: 6px 0;
+}
+
+body,
+ul,
+li,
+blockquote {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+}
