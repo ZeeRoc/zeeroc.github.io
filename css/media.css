@@ -42,6 +42,12 @@
     .people-details-info li:nth-child(2) {
         display: none;
     }
+    .people-info-headpic {
+        display: none;
+    }
+    .section.container-wapper {
+        margin-top: 5rem;
+    }
     .contact-way {
         display: none;
     }
