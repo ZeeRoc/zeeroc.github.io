@@ -399,9 +399,13 @@ blockquote {
 
 .mobile-bar li {
     display: inline-block;
-    line-height: 60px;
+    line-height: 5rem;
     width: 24%;
     text-align: center;
+}
+
+.mobile-bar li i {
+    font-size: 3rem;
 }
 
 .mobile-bar li:hover i {
