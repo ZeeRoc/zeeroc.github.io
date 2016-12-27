@@ -416,6 +416,7 @@ blockquote {
 }
 
 .mobile-bar span {
+    padding-top: 0.5rem;
     display: block;
 }
 
