@@ -45,7 +45,7 @@
 
 <h3 class="article-item"> 1. 准备工作</h3>
 
-<p>可见每次都会有一个请求是新建了个 TCP 连接的，也就是说默认只保持两条持久连接，这是因为这里自定义的的<code>http.Transport</code> 没有设置<code>MaxIdleConnsPerHost</code>，于是便采用了默认的<code>DefaultMaxIdleConnsPerHost</code>，这个值是 2，这是 <a href="http://baidu.com">RFC2616</a> 建议的单个客户端发起的持久连接数，不过在大部分情况下，这个值有点过于保守了。如果把 MaxIdleConnsPerHost 设置为 3，结果便和第一种情况一样。</p>
+<p>可见每次都会有一个请求是新建了个 TCP 连接的，也就是说默认只保持两条持久连接，这是因为这里自定义的的<code>http.Transport</code> 没有设置<code>MaxIdleConnsPerHost</code>，于是便采用了默认的<code>DefaultMaxIdleConnsPerHost</code>，这个值是 2，这是 <a href="http://baidu.com">RFC2616</a> 建议的单个客户端发起的持久连接数，不过在大部分情况下，这个值有点过于保守了。如果把<code>MaxIdleConnsPerHost</code> 设置为 3，结果便和第一种情况一样。</p>
 <div class="this.program.call( lines = linenos : language : classify = pre-lump ).init() clearfix">                    <dl class="clearfix">                        <dt><pre>1
 2
 3
@@ -57,26 +57,207 @@
 9
 10
 11
-12</pre></dt>                        <dd>                            <pre class="this.lang = lang-js"><span class="token keyword">var</span> express = require(<span class="token string">'express'</span>);
-<span class="token keyword">var</span> app = express();
-<span class="token keyword">var</span> http = require(<span class="token string">'http'</span>);
-<span class="token keyword">var</span> route = require(<span class="token string">'./route'</span>);
-<span class="token keyword">var</span> service = require(<span class="token string">'.<span class="token regex">/route/</span>service.js'</span>);
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre></dt>                        <dd>                            <pre class="this.lang = lang-js">addEventFunc: <span class="token keyword">function</span>() {
+    <span class="token keyword">return</span> a;
+},
+<span class="token comment">/*
+ *绑定事件
+ */</span>
+addEventFunc: <span class="token keyword">function</span>() {
+    <span class="token keyword">var</span> _self = <span class="token obj">this</span>;
+    <span class="token obj">this</span>._x = <span class="token obj">this</span>._y = 0;
 
-route.handle(app);
+    <span class="token obj">this</span>._stop = <span class="token keyword">function</span>() {
+        <span class="token keyword">return</span> _self.Stop.call(_self);
+    }
 
+    <span class="token obj">this</span>._move = <span class="token keyword">function</span>(event) {
+        <span class="token keyword">return</span> _self.Move.call(_self, (event || <span class="token keyword">window</span>.event));
+    }
 
-http.createServer(app).listen(300, <span class="token keyword">function</span>() {
-    console.log(<span class="token string">"Express server listening on port "</span> + 300);
-});</pre>                        </dd>                    </dl>                </div>
+    <span class="token obj">this</span>.arrowInterval = <span class="token obj">false</span>;
 
-<h3 class="article-item"> 2. 测试</h3>
+    <span class="token keyword">if</span> (<span class="token obj">this</span>.isY) {
+        addEvent(<span class="token obj">this</span>.img_scroll_Y, <span class="token string">"mousedown"</span>, <span class="token keyword">function</span>(event) {
+            _self.disableX = <span class="token obj">true</span>;
+            _self.disableY = <span class="token obj">false</span>;
+            _self.Start.call(_self, (event || <span class="token keyword">window</span>.event));
+        }); 
+        <span class="token keyword">if</span>(<span class="token obj">this</span>.isShowArrow){
+            <span class="token comment">/*向上 箭头*/</span>
+            <span class="token obj">this</span>.arrowUp = <span class="token keyword">function</span>() {
+                <span class="token keyword">return</span> _self.arrowMove.call(_self, <span class="token string">'up'</span>);
+            }
+            
+            addEvent(<span class="token obj">this</span>.Tarrow, <span class="token string">'mousedown'</span>, <span class="token keyword">function</span>() {
+                _self.arrowInterval = setInterval(_self.arrowUp, 70)
+            });
+            addEvent(<span class="token obj">this</span>.Tarrow, <span class="token string">'mouseup'</span>, <span class="token keyword">function</span>() {
+                clearInterval(_self.arrowInterval)
+            });
+
+            <span class="token comment">/*向下 箭头*/</span>
+            <span class="token obj">this</span>.arrowDown = <span class="token keyword">function</span>() {
+                <span class="token keyword">return</span> _self.arrowMove.call(_self, <span class="token string">'down'</span>);
+            }
+            
+            addEvent(<span class="token obj">this</span>.Barrow, <span class="token string">'mousedown'</span>, <span class="token keyword">function</span>() {
+                _self.arrowInterval = setInterval(_self.arrowDown, 70)
+            });
+            addEvent(<span class="token obj">this</span>.Barrow, <span class="token string">'mouseup'</span>, <span class="token keyword">function</span>() {
+                clearInterval(_self.arrowInterval)
+            });
+        }
+
+        addEvent(<span class="token obj">this</span>.scroll_area_Y, <span class="token string">'click'</span>, <span class="token keyword">function</span>(event) {
+            _self.sClick.call(_self, (event || <span class="token keyword">window</span>.event))
+        });
+        
+        <span class="token keyword">var</span> isFirefox = <span class="token keyword">navigator</span>.userAgent.indexOf(<span class="token string">'Firefox'</span>) >= 0 ? <span class="token obj">true</span> : <span class="token obj">false</span>;
+        
+        addEvent(<span class="token obj">this</span>.scrollWarper, isFirefox ? <span class="token string">'DOMMouseScroll'</span> : <span class="token string">'mousewheel'</span>, <span class="token keyword">function</span>(event) {
+            _self.WheelCtrl.call(_self, (event || <span class="token keyword">window</span>.event))
+        });
+
+        <span class="token comment">// alert(<span class="token keyword">navigator</span>.appVersion.indexOf(<span class="token string">'MSIE'</span>));</span>
+    }
+
+    <span class="token keyword">if</span> (<span class="token obj">this</span>.isX) {
+        addEvent(<span class="token obj">this</span>.img_scroll_X, <span class="token string">"mousedown"</span>, <span class="token keyword">function</span>(event) {
+            _self.disableX = <span class="token obj">false</span>;
+            _self.disableY = <span class="token obj">true</span>;
+            _self.Start.call(_self, (event || <span class="token keyword">window</span>.event));
+        }); 
+
+        <span class="token keyword">if</span>(<span class="token obj">this</span>.isShowArrow){
+            <span class="token comment">/*向左 箭头*/</span>
+            <span class="token obj">this</span>.arrowLeft = <span class="token keyword">function</span>() {
+                <span class="token keyword">return</span> _self.arrowMove.call(_self, <span class="token string">'left'</span>);
+            }
+            addEvent(<span class="token obj">this</span>.Larrow, <span class="token string">'mousedown'</span>, <span class="token keyword">function</span>() {
+                _self.arrowInterval = setInterval(_self.arrowLeft, 70)
+            });
+            addEvent(<span class="token obj">this</span>.Larrow, <span class="token string">'mouseup'</span>, <span class="token keyword">function</span>() {
+                clearInterval(_self.arrowInterval)
+            });
+
+            <span class="token comment">/*向右 箭头*/</span>
+            <span class="token obj">this</span>.arrowRight = <span class="token keyword">function</span>() {
+                <span class="token keyword">return</span> _self.arrowMove.call(_self, <span class="token string">'right'</span>);
+            }
+            addEvent(<span class="token obj">this</span>.Rarrow, <span class="token string">'mousedown'</span>, <span class="token keyword">function</span>() {
+                _self.arrowInterval = setInterval(_self.arrowRight, 70)
+            });
+            addEvent(<span class="token obj">this</span>.Rarrow, <span class="token string">'mouseup'</span>, <span class="token keyword">function</span>() {
+                clearInterval(_self.arrowInterval)
+            });
+        }
+
+        addEvent(<span class="token obj">this</span>.scroll_area_X, <span class="token string">'click'</span>, <span class="token keyword">function</span>(event) {
+            _self.sClick.call(_self, (event || <span class="token keyword">window</span>.event))
+        });
+    }
+}</pre>                        </dd>                    </dl>                </div><ul><li><p> 在使用 HashTable 时则会十分<a href="http://baidu.com">《Some Kind of Trouble》</a>费空间，而位向量则不能处理这个问题，这个时候 Bloom Filter 的优势就体现出来了。</p></li><li><p> 在这个问题的处理上，Bloom Filter 和 HashTable、位向量相比，没占优势啊，而且结果还是有错误率的。</p></li><li><p> 元素最少的集合 B 有一百万个元素，如果放在内存之中，也就大概占用 8M 左右，而 HashTable 插入一百万条数据是很快的。不过当时是被 A 集合吓到了，一千亿个64位的数，估计现在还没有内存能全部容下</p></li></ul>
+<h3 class="article-item"> 4. 测试</h3>
+
 <figure><img src="https://dn-serho.qbox.me/blog/20160211-6.jpg" alt="釜山第一瞥"<blockquote><p>                <figcaption>釜山第一瞥</figcaption>            </figure></p></blockquote>
 
 <blockquote><p> “你好美！你好美！你真的好美!她有天使般的笑容，或许我“应该”和她在一起，但是…….事实是，我们不可能在一起”</p></blockquote>
 
 <p>那么This造成的一个假象是什么呢？</p>
 <p>于是火速去找这位上尉诗人的专辑，有幸在论坛上把三张专辑的无损格式给下载下来了，有两张是APE格式的，有一张是FLAC格式的，由于是校内的论坛，普通用户无法下载，好东西不能独享，于是今天将其传到115网盘，和大家一起分享。这三张专辑分别是<a href="http://baidu.com">《Back to Bedlam》</a>（不安于室），<a href="http://baidu.com">《All The Lost Souls》</a>（失落的灵魂），<a href="http://baidu.com">《Some Kind of Trouble》</a>（美丽的忧虑）。各个专辑的曲目，网上多的是，这里就不一一详解了，喜欢的朋友们，开动电脑下载吧。</p>
+
+<h3 class="article-item"> 2. 举几个例子</h3>
+<ol><li><p> 因为处理的是整数集合，所以在<a href="http://baidu.com">《Some Kind of Trouble》</a>空间使用上，这里 Bloom Filter 并没有表现出自己独特的风采，不过如果 A,B 集合中储存的是字符串呢，比如 URL 什么的</p></li><li><p> 和集合有关的问题，位向量使用比较多，这里有个问题是元素均为位，如果直接开辟一个 bit 的向量，内存绝对是不够的。而 B 中只有一百万个元素，这个位向量一定非常稀疏，所以可以考虑位向量的压缩储存——采用多级位向量</p></li><li><p> 在这个问题的处理上，Bloom Filter 和 HashTable、位向量相比，没占优势啊，而且结果还是有错误率的。</p></li></ol>
         </div>
         <div class="article-detail-info">
             <ul>

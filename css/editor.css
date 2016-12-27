@@ -1,8 +1,9 @@
 .pre-lump {
     text-align: left;
     border-radius: 4px;
-    font-size: 12px;
+    /*font-size: 12px;*/
     /*background: #f7f7f9;*/
+    background-color: #f7f7f9;
     margin: 22px 0;
     /*border: 1px solid #e1e1e8;*/
 }
@@ -35,7 +36,8 @@
 }
 
 .pre-lump dd pre {
-    font-family: 'Consolas';
+    font-family: Consolas;
+    font-size: 13px;
     overflow: auto;
     color: #333;
     padding: 0 20px;

@@ -90,7 +90,7 @@ nav li.active a {
 }
 
 section {
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 0 3px lightgray;
     /*border:1px solid gray;*/
@@ -106,8 +106,8 @@ section {
 }
 
 .people-info-container {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     line-height: 48px;
     background-color: rgba(42, 42, 42, .85);
     /*background-color: #0dad51;*/
@@ -331,7 +331,7 @@ article .article-title:hover {
     color: #999;
     display: block;
     width: 100%;
-    padding: 2rem 0;
+    padding: 1rem 0;
     margin: 1.2rem auto;
     /*background: rgba(0,0,0,0.5);*/
 }
@@ -388,6 +388,26 @@ blockquote {
     font-size: 1.5rem;
 }
 
+.mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .23)
+}
+
+.mobile-bar li {
+    display: inline-block;
+    line-height: 60px;
+    width: 24%;
+    text-align: center;
+}
+
+.mobile-bar li:hover i {
+    color: #0dad51;
+}
+
 
 /*
     element
@@ -404,11 +424,6 @@ blockquote {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, .075);
     transition: border-color ease-in-out .45s, box-shadow ease-in-out .45s, background-color ease-in-out .45s;
 }
-
-
-/*::-webkit-input-placeholder{
-    color:white;
-}*/
 
 .form-input:focus {
     border-color: #66afe9;
