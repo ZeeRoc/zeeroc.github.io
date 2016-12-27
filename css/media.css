@@ -7,6 +7,9 @@
     footer {
         width: 100%;
     }
+    section.container-wapper {
+        margin-top: 5rem;
+    }
     .article-body {
         width: 100%;
     }
@@ -44,9 +47,6 @@
     }
     .people-info-headpic {
         display: none;
-    }
-    .section.container-wapper {
-        margin-top: 5rem;
     }
     .contact-way {
         /*display: none;*/

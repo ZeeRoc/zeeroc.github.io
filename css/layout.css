@@ -147,8 +147,8 @@ section {
 }
 
 .contact-way i {
-    font-size: 27px;
-    line-height: 50px;
+    font-size: 2.6rem;
+    line-height: 4rem;
 }
 
 .people-details-info {
@@ -156,8 +156,8 @@ section {
 }
 
 .name {
-    font-size: 2.2rem;
-    margin: 0 1.2rem;
+    font-size: 2rem;
+    margin: 0 1rem;
     color: #fff;
 }
 
