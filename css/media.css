@@ -48,6 +48,9 @@
     .people-info-headpic {
         display: none;
     }
+    .mobile-bar {
+        display: block;
+    }
     .contact-way {
         /*display: none;*/
     }

@@ -389,17 +389,18 @@ blockquote {
 }
 
 .mobile-bar {
+    display: none;
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     background: #fff;
-    box-shadow: 0 0 3px rgba(0, 0, 0, .23)
+    box-shadow: 0 0 3px rgba(0, 0, 0, .23);
 }
 
 .mobile-bar li {
+    padding: 1rem 0;
     display: inline-block;
-    line-height: 6rem;
     width: 24%;
     text-align: center;
 }
@@ -408,8 +409,14 @@ blockquote {
     font-size: 3rem;
 }
 
-.mobile-bar li:hover i {
+.mobile-bar li:hover i,
+.mobile-bar li:hover span {
+    transition: all .3s ease;
     color: #0dad51;
+}
+
+.mobile-bar span {
+    display: block;
 }
 
 
