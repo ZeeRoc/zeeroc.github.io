@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/media.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0,minimum-scale=1,maximum-scale=1">
 </head>
 
 <body>
@@ -20,15 +20,15 @@
             <nav>
                 <ul>
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="tags.html">Tags</a></li>
-                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="tags.html">Classify</a></li>
+                    <li><a href="photos.html">Album</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section class="container-wapper">
-        <div class="people-info-container p-body clearfix">
+    <section class="container-wapper outerScroller">
+        <div class="people-info-container p-body scroll clearfix">
             <div class="people-info">
                 <div class="people-info-headpic">
                     <a href="javascript:;">
@@ -37,7 +37,7 @@
                 </div>
                 <ul class="people-details-info">
                     <li>
-                        <a href="javascript:;"></a><span><a class="name" href="##">沈飞 ( Francis )</a></span>
+                        <span><a class="name" href="##">沈飞 ( Francis )</a></span>
                     </li>
                     <li>
                         <span class="motto">认真 有爱 睿智 博识 远见 自省</span>
@@ -263,22 +263,63 @@
                         <li><a class="article-access-info" href="javascript:;">喜欢(125)</a></li>
                     </ul>
                 </article>
-                <a class="load-new-artcile" href="javascript:;"><i class="i">&#xe604;</i>点击此处加载新内容...</a>
+                <a class="load-new-artcile" style="display: none;" href="javascript:;"><i class="i">&#xe604;</i>点击此处加载新内容...</a>
             </div>
         </div>
     </section>
     <div class="mobile-bar">
         <ul>
-            <li><a href="##"><i class="i">&#xe602;</i><span>Home</span></a></li>
-            <li><a href="##"><i class="i">&#xe607;</i><span>Tags</span></a></li>
-            <li><a href="##"><i class="i">&#xe603;</i><span>Photos</span></a></li>
-            <li><a href="##"><i class="i">&#xe605;</i><span>About</span></a></li>
+            <li><a href="##"><i class="i">&#xe6b8;</i><span>首页</span></a></li>
+            <li><a href="##"><i class="i">&#xe7e7;</i><span>分类</span></a></li>
+            <li><a href="##"><i class="i">&#xe665;</i><span>照片</span></a></li>
+            <li><a href="##"><i class="i">&#xe7d5;</i><span>关于</span></a></li>
         </ul>
     </div>
+    <!--<div class="loading-view">
+        <span>兼容IE从来就与我无关</span>
+    </div>-->
     <footer>Copyright © 2005 - 2015 0x003.com All Rights Reserved.</footer>
-    <script>
-        // alert(navigator.userAgent)
-    </script>
+    <!--<script>
+        var scroll = document.querySelector('.scroll');
+        var outerScroller = document.querySelector('.outerScroller');
+        var touchStart = 0;
+        var touchDis = 0;
+        outerScroller.addEventListener('touchstart', function(event) {
+            var touch = event.targetTouches[0];
+            // 把元素放在手指所在的位置 
+            touchStart = touch.pageY;
+            console.log(touchStart);
+        }, false);
+        outerScroller.addEventListener('touchmove', function(event) {
+            // alert("move")
+            var touch = event.targetTouches[0];
+            console.log(touch.pageY + 'px');
+            scroll.style.top = scroll.offsetTop + touch.pageY - touchStart + 'px';
+            console.log(scroll.style.top);
+            touchStart = touch.pageY;
+            touchDis = touch.pageY - touchStart;
+        }, false);
+        outerScroller.addEventListener('touchend', function(event) {
+            touchStart = 0;
+            var top = scroll.offsetTop;
+            console.log(top);
+            if (top > 70) refresh();
+            if (top > 0) {
+                var time = setInterval(function() {
+                    scroll.style.top = scroll.offsetTop - 2 + 'px';
+                    if (scroll.offsetTop <= 0) clearInterval(time);
+                }, 1)
+            }
+        }, false);
+
+        function refresh() {
+            for (var i = 10; i > 0; i--) {
+                var node = document.createElement("li");
+                node.innerHTML = "I'm new";
+                scroll.insertBefore(node, scroll.firstChild);
+            }
+        }
+    </script>-->
 </body>
 
 </html>

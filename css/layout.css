@@ -22,7 +22,7 @@ footer,
 
 section.container-wapper {
     margin-top: 130px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 
@@ -108,7 +108,6 @@ section {
 .people-info-container {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    line-height: 48px;
     background-color: rgba(42, 42, 42, .85);
     /*background-color: #0dad51;*/
 }
@@ -139,7 +138,7 @@ section {
 
 .contact-way a {
     color: #fff;
-    transition: color ease-in-out .25s;
+    transition: color ease-in-out .15s;
 }
 
 .contact-way a:hover {
@@ -147,12 +146,14 @@ section {
 }
 
 .contact-way i {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     line-height: 4rem;
 }
 
 .people-details-info {
     float: left;
+    line-height: 4.2rem;
+    font-size: 0;
 }
 
 .name {
@@ -164,7 +165,6 @@ section {
 .motto {
     font-size: 14px;
     color: #fff;
-    ;
     /*margin:0 1.2rem;*/
 }
 
@@ -174,7 +174,7 @@ section {
 
 .page-banner {
     /*height: 100px;*/
-    padding: 6rem 0;
+    padding: 4rem 0;
     background: url(../images/banner/b-1.png) no-repeat;
     /*background-color: red;*/
     background-size: cover;
@@ -188,19 +188,19 @@ section {
 }
 
 .page-classify ul {
-    margin: 22px;
+    margin: 2rem 0rem;
     text-align: center;
 }
 
 .page-classify {}
 
 .page-classify ul li a {
-    margin: 0 0.6rem;
+    margin: 0 0.2rem;
     font-size: 1.2rem;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
     padding: 3px 0.8rem;
     color: #0dad51;
-    line-height: 3.8rem;
+    line-height: 3.4rem;
     border: 1px solid #0dad51;
 }
 
@@ -208,7 +208,7 @@ section {
 .page-classify ul li a:hover {
     color: #fff;
     background-color: #0dad51;
-    transition: color ease-in-out .25s, background-color ease-in-out .25s;
+    transition: color ease-in-out .15s, background-color ease-in-out .15s;
 }
 
 .article-list {
@@ -235,7 +235,7 @@ section {
 }*/
 
 article .article-title {
-    transition: color ease-in-out .25s;
+    transition: color ease-in-out .15s;
     font-size: 1.8rem;
     color: #555;
 }
@@ -394,30 +394,59 @@ blockquote {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
     background: #fff;
     box-shadow: 0 0 3px rgba(0, 0, 0, .23);
 }
 
+.mobile-bar ul {
+    width: 100%;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+
 .mobile-bar li {
     padding: 1rem 0;
-    display: inline-block;
-    width: 24%;
+    display: block;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
     text-align: center;
 }
 
 .mobile-bar li i {
-    font-size: 3rem;
+    font-size: 2.4rem;
+    color: #6d7275;
 }
 
 .mobile-bar li:hover i,
 .mobile-bar li:hover span {
-    transition: all .3s ease;
+    transition: all 0.15s ease-in-out;
     color: #0dad51;
 }
 
 .mobile-bar span {
-    padding-top: 0.3rem;
+    /*padding-top: 0.1rem;*/
+    color: rgba(147, 147, 147, 1);
     display: block;
+}
+
+.loading-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 25rem 0;
+    background: #0dad51;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+    font-size: 3rem;
 }
 
 
@@ -431,10 +460,10 @@ blockquote {
     background: rgba(0, 0, 0, .2);
     width: 100%;
     border-radius: 2px;
-    padding: 8px 1.2rem;
+    padding: 0.8rem 1rem;
     border: 1px solid #fff;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, .075);
-    transition: border-color ease-in-out .45s, box-shadow ease-in-out .45s, background-color ease-in-out .45s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, background-color ease-in-out .15s;
 }
 
 .form-input:focus {
@@ -457,6 +486,6 @@ blockquote {
 }
 
 .p-body {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
